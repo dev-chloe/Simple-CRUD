@@ -1,5 +1,6 @@
+import indexindexStyle from '../css/index.module.scss'
 export default function Index() {
   return (
-    <div>Hello world!</div>
+    <div className={indexindexStyle.box}>Hello world!</div>
   )
 }

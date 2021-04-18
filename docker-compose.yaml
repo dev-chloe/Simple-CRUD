@@ -1,0 +1,57 @@
+# REF :: https://github.com/docker/awesome-compose/blob/master/react-java-mysql/docker-compose.yaml
+version: "3.7"
+services:
+  web:
+    build:
+      context: web
+    ports:
+      - 3000:3000
+    volumes:
+      - ./web/src:/app/src
+    networks:
+      - next-springboot
+    depends_on:
+      - app
+
+  app:
+    image: dev2sponge/simple-crud-app:latest
+    restart: always
+    secrets:
+      - db-password
+    environment:
+      MYSQL_HOST: db
+    networks:
+      - next-springboot
+      - spring-mysql
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    environment:
+      MYSQL_DATABASE: simple-crud
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db-password
+    image: mysql:8.0.19
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      interval: 3s
+      retries: 5
+      start_period: 30s
+    secrets:
+      - db-password
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - spring-mysql
+
+volumes:
+  db-data: {}
+
+secrets:
+  db-password:
+    file: data/local-password.txt
+
+networks:
+  next-springboot: {}
+  spring-mysql: {}

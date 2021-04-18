@@ -1,4 +1,4 @@
-package com.toyproject.simplecrud;
+package com.toyproject.simplecrudapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

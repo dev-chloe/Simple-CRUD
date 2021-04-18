@@ -33,9 +33,9 @@ npx create-next-app $APP_NAME --use-npm
   }
   ```
   
-  - For global style: [/css/style.scss](./css/style.scss) + [/pages/_app.js](./pages/_app.js)
+  - For global style: [/css/styles.scss](./css/styles.scss) + [/pages/_app.tsx](./pages/_app.tsx)
   
-  - For page style: [/css/index.module.scss](./css/index.module.scss) + [/pages/index.js](./pages/index.js)
+  - For page style: [/css/index.module.scss](./css/index.module.scss) + [/pages/index.tsx](./pages/index.tsx)
   
   - [Best Practice (by Vercel)](https://github.com/vercel/next-learn-starter/blob/master/typescript-final/pages/index.tsx#L3)
   

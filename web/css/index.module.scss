@@ -1,3 +1,24 @@
+$main: #B09EFA;
 .box {
-  background: gray;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 140px;
+    color: #FFFFFF;
+    background: $main;
+    padding: 7px 0;
+    margin-top: 10px;
+  }
 }

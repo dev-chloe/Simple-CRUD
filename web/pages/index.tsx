@@ -4,11 +4,9 @@ import Link from 'next/link'
 const IndexPage = () => (
   <div className={indexStyle.box}>
     <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
+    <Link href="/register">
+      <a className={indexStyle.btn}>Register</a>
+    </Link>
   </div>
 )
 

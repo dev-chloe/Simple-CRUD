@@ -33,8 +33,15 @@ $main: #B09EFA;
       width: 100%;
       color: #FFFFFF;
       font-size: 20px;
-      padding: 10px;
-      margin-bottom: 2%;
+      padding: 12px 0;
+      margin-bottom: 5%;
+      &:hover {
+        box-shadow: 0 0 10px #B09EFA;
+        border: 1px inset #B09EFA;
+        background: #FFFFFF;
+        color: #B09EFA;
+        transition: color .5s, background .5s, box-shadow .5s, border .5s;
+      }
     }
     a {
       color: $main;

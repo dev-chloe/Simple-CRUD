@@ -10,9 +10,51 @@
 | `/health-check` | GET    | -         | `OK[200]` - String    |
 
 
-## How to build docker image
+## How to ...
 
-### Use [Jib](https://github.com/GoogleContainerTools/jib#jib)
+### run application on local
+
+#### 1. Prepare MySQL
+
+- build mysql docker image
+
+  ```bash
+  docker build -t simple-crud-mysql ./for-dev
+  ```
+
+- run for Mac OSX
+  
+  ```bash
+  DEV_PW=local-admin
+  docker run -d \
+    -p 3306:3306 \
+    -p 33060:33060 \
+    -e MYSQL_ROOT_PASSWORD=$DEV_PW \
+    --name simple-crud-mysql \
+    simple-crud-mysql
+  ```
+
+- run for PowerShell (Windows 10)
+
+  ```powershell
+  $MY_ROOT_PW="local-admin"
+  docker run -d `
+    -p 3306:3306 `
+    -p 33060:33060 `
+    -e MYSQL_ROOT_PASSWORD="$MY_ROOT_PW" `
+    --name simple-crud-mysql `
+    simple-crud-mysql
+  ```
+
+#### 2. Run Application
+
+```bash
+
+```
+
+### build docker image
+
+- Use [Jib](https://github.com/GoogleContainerTools/jib#jib)
 
 ```bash
 docker pull openjdk:11-jre

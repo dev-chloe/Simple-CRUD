@@ -18,7 +18,7 @@ init-connect         = SET NAMES utf8mb4
 
 # innodb settings
 # innodb_data_home_dir  = /simple-crud/data.mysql/data
-innodb_data_file_path = idata1:128M;idata2:128M:autoextend
+innodb_data_file_path = data1:128M;data2:128M:autoextend
 # innodb_log_group_home_dir = /simple-crud/data.mysql/data
 innodb_buffer_pool_size = 128M
 innodb_log_file_size = 20M

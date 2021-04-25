@@ -1,52 +1,58 @@
 # REF :: https://github.com/docker/awesome-compose/blob/master/react-java-mysql/docker-compose.yaml
-version: "3.7"
+version: "3.8" # Docker Engine 19.03+
 services:
   web:
     build:
       context: web
+    environment:
+      API_HOST: app
+      API_PORT: 8080
     ports:
-      - 3000:3000
-    volumes:
-      - ./web/src:/app/src
+      - 80:3000
     networks:
       - next-springboot
     depends_on:
-      - app
+      app:
+        condition: service_healthy
+    restart: always
 
   app:
     image: dev2sponge/simple-crud-app:latest
-    restart: always
+    environment:
+      spring.datasource.url: "jdbc:mysql://db:3306/simple"
+      spring.datasource.password: /run/secrets/db-password
     secrets:
       - db-password
-    environment:
-      MYSQL_HOST: db
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:8080/health-check"]
+      interval: 1s
+      retries: 10
+      start_period: 3s
+    ports:
+      - 8080:8080
     networks:
       - next-springboot
       - spring-mysql
     depends_on:
       db:
         condition: service_healthy
+    restart: always
 
   db:
+    build:
+      context: app/for-dev
     environment:
-      MYSQL_DATABASE: simple-crud
-      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db-password
-    image: mysql:8.0.19
-    restart: always
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
-      interval: 3s
-      retries: 5
-      start_period: 30s
+      MYSQL_ROOT_PASSWORD: /run/secrets/db-password
     secrets:
       - db-password
-    volumes:
-      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      interval: 15s
+      retries: 3
+      start_period: 3s
     networks:
       - spring-mysql
-
-volumes:
-  db-data: {}
+    restart: always
 
 secrets:
   db-password:

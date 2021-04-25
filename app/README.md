@@ -4,17 +4,15 @@
 
 ### root
 
-| URI             | Method | Data      | Response              |
-| :-------------- | :----- | :-------- | :-------------------- |
-| `/`             | GET    | -         | `OK[200]` - String    |
-| `/health-check` | GET    | -         | `OK[200]` - String    |
+| URI             | Method | Data | Response           | Since |
+| :-------------- | :----- | :--- | :----------------- | :---- |
+| `/`             | GET    | -    | `OK[200]` - String | 0.0.1 |
+| `/health-check` | GET    | -    | `OK[200]` - String | 0.0.1 |
 
 
 ## How to ...
 
-### run application on local
-
-#### 1. Prepare MySQL
+### Prepare MySQL
 
 - build mysql docker image
 
@@ -46,11 +44,9 @@
     simple-crud-mysql
   ```
 
-#### 2. Run Application
+### run Application
 
-```bash
-
-```
+- Please run in [Intellij](https://www.jetbrains.com/ko-kr/idea/download/download-thanks.html) IDE
 
 ### build docker image
 

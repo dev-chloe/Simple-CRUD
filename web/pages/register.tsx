@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 import registerStyle from '../css/register.module.scss'
 import Custominput from '../components/custominput'
 import validateEmail from '../utils/validators/validateEmail'
 import validateRequired from '../utils/validators/validateRequired'
+
 
 const inintialState = {
   name: '',
@@ -15,6 +17,23 @@ const inintialState = {
 const Register = () => {
   const [ registerInfo, setRegisterInfo ] = useState(inintialState)
   const [ error, setError ] = useState('')
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { email, password, name } = registerInfo
+
+    if( !email || !password || !name ) {
+      return
+    }
+    try {
+      console.log('fin')
+      router.replace('/')
+    } catch(error) {
+      setError(error.message);
+    }
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,10 +47,10 @@ const Register = () => {
   return (
     <div className={registerStyle.container}>
       <h2>Register</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         {/* 
           TODO
-          - submit change handler
+          - fix submit
         */}
         <Custominput
           type="name"
@@ -39,7 +58,7 @@ const Register = () => {
           placeholder="Enter your name"
           value={registerInfo.name}
           onChange={handleInputChange}
-          onBlur={validateRequired}
+          onBlur={validateEmail}
         ></Custominput>
         <Custominput
           type="email"
@@ -58,7 +77,7 @@ const Register = () => {
           onBlur={validateRequired}
         ></Custominput>
         <button type="submit">Submit</button>
-        <Link href="">
+        <Link href="/login">
           <a>Login</a>
         </Link>
       </form>

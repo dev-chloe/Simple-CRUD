@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import registerStyle from '../css/register.module.scss'
 import CustomInput from '../components/custominput'
@@ -13,6 +14,25 @@ const inintialState = {
 
 const login = () => {
   const [ loginInfo, setLoginInfo ] = useState(inintialState)
+  const [ error, setError ] = useState('')
+  const router = useRouter()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { email, password } = loginInfo
+
+    if( !email || !password) {
+      setError("Please fill forms")
+      return
+    }
+    try {
+      console.log('hi')
+      router.replace('/')
+    } catch (error) {
+      setError(error.message)
+    }
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +45,7 @@ const login = () => {
   return (
     <div className={registerStyle.container}>
       <h2>Login</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <CustomInput
           type="email"
           name="email"

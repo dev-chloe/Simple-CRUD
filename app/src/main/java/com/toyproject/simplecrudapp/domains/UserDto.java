@@ -1,27 +1,32 @@
 package com.toyproject.simplecrudapp.domains;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import com.toyproject.simplecrudapp.utils.fixed.RegExp;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NonNull;
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Getter
 @Builder
-public class UserDto {
+@AllArgsConstructor
+public class UserDto implements IDto<User> {
 
-  @NotBlank
-  @Pattern(regexp = "^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)$")
-  private String email;
+  @NonNull
+  @Pattern(regexp = RegExp.Email ,message = "'email' is invalid")
+  private final String email;
 
-  @NotBlank
-  @Size(min = 8)
-  private String password;
+  @NonNull
+  @Size(min = 8, message = "'password' must be longer than 8 words" )
+  private final String password;
 
-  @NotBlank
-  @Size(min = 2, max = 30)
-  private String nickname;
+  @NonNull
+  @Size(min = 2, message = "'nickname' must be longer than 2 words" )
+  private final String nickname;
 
+  @Override
   public User toEntity() {
     return User.builder()
                .email(email)

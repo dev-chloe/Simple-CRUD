@@ -30,4 +30,8 @@ public class User {
   @NotBlank
   private final String nickname;
 
+  @Override
+  public String toString() {
+    return String.format( "User > id: '%d', email: '%s', nickname: '%s'", id, email, nickname);
+  }
 }

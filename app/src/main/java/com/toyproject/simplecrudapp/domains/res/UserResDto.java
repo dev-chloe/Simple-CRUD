@@ -1,5 +1,6 @@
-package com.toyproject.simplecrudapp.domains;
+package com.toyproject.simplecrudapp.domains.res;
 
+import com.toyproject.simplecrudapp.domains.User;
 import com.toyproject.simplecrudapp.interfaces.exceptions.UserResException;
 import com.toyproject.simplecrudapp.utils.fixed.RegExp;
 import lombok.Getter;
@@ -14,7 +15,6 @@ import java.util.Objects;
 @Getter
 public class UserResDto {
 
-  @Id
   @Positive(message = "'id' must be positive number(long)")
   private Long id;
 
@@ -27,7 +27,7 @@ public class UserResDto {
 
   public static UserResDto factory( @Valid User userEntity ) {
     if ( Objects.isNull( userEntity.getId() )) {
-      throw UserResException.ID_CANNOT_BE_NULL;
+      throw UserResException.ID_NULL;
     }
     return new UserResDto(userEntity);
   }
@@ -36,5 +36,10 @@ public class UserResDto {
     this.id = userEntity.getId();
     this.email = userEntity.getEmail();
     this.nickname = userEntity.getNickname();
+  }
+
+  @Override
+  public String toString() {
+    return String.format( "UserResDto > id: '%d', email: '%s', nickname: '%s'", id, email, nickname);
   }
 }

@@ -27,4 +27,16 @@ public class CommonAdvisor {
     return jsonMap;
   }
 
+  /**
+   * Handle All RuntimeException.
+   */
+  @ExceptionHandler( RuntimeException.class )
+  @ResponseStatus( HttpStatus.INTERNAL_SERVER_ERROR ) // 500
+  @ResponseBody
+  public Map<String, Object> handleAllRuntimeException(RuntimeException e) {
+    Map<String, Object> jsonMap = new HashMap<>();
+    jsonMap.put( Res.K.Cause, "Internal server crash");
+    jsonMap.put( Res.K.Detail, e.getMessage());
+    return jsonMap;
+  }
 }

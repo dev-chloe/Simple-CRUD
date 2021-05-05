@@ -1,10 +1,10 @@
-package com.toyproject.simplecrudapp.domains;
+package com.toyproject.simplecrudapp.domains.req;
 
+import com.toyproject.simplecrudapp.domains.User;
 import com.toyproject.simplecrudapp.utils.fixed.RegExp;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NonNull;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Builder
 @AllArgsConstructor
-public class UserReqDto implements IReqDto<User> {
+public class UserReqDto implements IReqDto< User > {
 
   @Pattern(regexp = RegExp.Email ,message = "'email' is invalid")
   private final String email;
@@ -32,5 +32,10 @@ public class UserReqDto implements IReqDto<User> {
                .password(password) // TODO Password Encrypt
                .nickname(nickname)
                .build();
+  }
+
+  @Override
+  public String toString() {
+    return String.format( "UserReqDto > email: '%s', nickname: '%s'", email, nickname);
   }
 }

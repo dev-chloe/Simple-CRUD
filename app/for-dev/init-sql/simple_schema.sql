@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS `simple` DEFAULT CHARACTER SET utf8mb4;
+
+USE `simple`;
+
+CREATE TABLE IF NOT EXISTS `user`
+(
+  id        MEDIUMINT     NOT NULL AUTO_INCREMENT COMMENT "회원 번호",
+  email     VARCHAR(100)  NOT NULL COMMENT "회원 메일 - 로그인 사용",
+  password  VARCHAR(512)  NOT NULL COMMENT "회원 암호",
+  nickname  VARCHAR(20)   DEFAULT "Nickname" COMMENT "회원 별칭",
+  created   TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
+
+  PRIMARY KEY (id)
+)
+ENGINE=INNODB
+COMMENT="회원";

@@ -9,14 +9,12 @@
 
 ## User API
 
-| Feature | URI             | Method | Data                      | Response                                    | Since |
-| :------ | :-------------- | :----- | :------------------------ | :------------------------------------------ | :---- |
-| sign-up | `/users`        | POST   | [UserReqDto](.#UserReqDto) | `[201] Created` - [UserResDto](#UserResDto) | 0.0.1 |
-| *       | `/users/*`      | *      | *                         | `[400/500]` - [ErrorInfo](#ErrorInfo)       | 0.0.1 |
+| Feature | URI             | Method | Data                       | Response                                    | Since |
+| :------ | :-------------- | :----- | :------------------------- | :------------------------------------------ | :---- |
+| sign-up | `/users`        | POST   | [UserReqDto](#userreqdto)  | `[201] Created` - [UserResDto](#userresdto) | 0.0.1 |
+| *       | `/users/*`      | *      | *                          | `[400/500] Error` - [ErrorInfo](#errorinfo) | 0.0.1 |
 
-### Request
-
-#### UserReqDto
+### UserReqDto
 
 ```json
 {
@@ -26,9 +24,7 @@
 }
 ```
 
-### Response
-
-#### UserResDto
+### UserResDto
 
 ```json
 // [201] Created
@@ -39,10 +35,10 @@
 }
   ```
   
-#### ErrorInfo
+### ErrorInfo
 
 ```json
-// [400/500] Error
+// [400, 500] Error
 {
   "cause": "reason",
   "detail": "error messages"

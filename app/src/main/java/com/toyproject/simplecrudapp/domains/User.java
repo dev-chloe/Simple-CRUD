@@ -1,9 +1,6 @@
 package com.toyproject.simplecrudapp.domains;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +9,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @Builder
 @Getter

@@ -9,10 +9,10 @@
 
 ## User API
 
-| Feature | URI             | Method | Data                       | Response                                    | Since |
-| :------ | :-------------- | :----- | :------------------------- | :------------------------------------------ | :---- |
-| sign-up | `/users`        | POST   | [UserReqDto](#userreqdto)  | `[201] Created` - [UserResDto](#userresdto) | 0.0.1 |
-| *       | `/users/*`      | *      | *                          | `[400/500] Error` - [ErrorInfo](#errorinfo) | 0.0.1 |
+| Feature | URI      | Method | Data                      | Response                                    | Since |
+| :------ | :------- | :----- | :------------------------ | :------------------------------------------ | :---- |
+| sign-up | `/users` | POST   | [UserReqDto](#userreqdto) | `[201] Created` - [UserResDto](#userresdto) | 0.0.1 |
+| *       | `*`      | *      | *                         | `[400/500] Error` - [ErrorInfo](#errorinfo) | 0.0.1 |
 
 ### UserReqDto
 

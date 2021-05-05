@@ -1,11 +1,10 @@
 package com.toyproject.simplecrudapp.domains.res;
 
 import com.toyproject.simplecrudapp.domains.User;
-import com.toyproject.simplecrudapp.interfaces.exceptions.UserResException;
+import com.toyproject.simplecrudapp.interfaces.exceptions.UserInternalException;
 import com.toyproject.simplecrudapp.utils.fixed.RegExp;
 import lombok.Getter;
 
-import javax.persistence.Id;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
@@ -27,7 +26,7 @@ public class UserResDto {
 
   public static UserResDto factory( @Valid User userEntity ) {
     if ( Objects.isNull( userEntity.getId() )) {
-      throw UserResException.ID_NULL;
+      throw UserInternalException.ENTITY_ID_NULL;
     }
     return new UserResDto(userEntity);
   }

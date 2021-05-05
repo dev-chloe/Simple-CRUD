@@ -1,16 +1,57 @@
 # APP on Spring Boot
 
-## REST-API List
+## Root API
 
-### root
+| URI             | Method | Data | Response            | Since |
+| :-------------- | :----- | :--- | :------------------ | :---- |
+| `/`             | GET    | -    | `[200] OK` - String | 0.0.1 |
+| `/health-check` | GET    | -    | `[200] OK` - String | 0.0.1 |
 
-| URI             | Method | Data | Response           | Since |
-| :-------------- | :----- | :--- | :----------------- | :---- |
-| `/`             | GET    | -    | `OK[200]` - String | 0.0.1 |
-| `/health-check` | GET    | -    | `OK[200]` - String | 0.0.1 |
+## User API
 
+| Feature | URI             | Method | Data                      | Response                                    | Since |
+| :------ | :-------------- | :----- | :------------------------ | :------------------------------------------ | :---- |
+| sign-up | `/users`        | POST   | [UserReqDto](.#UserReqDto) | `[201] Created` - [UserResDto](#UserResDto) | 0.0.1 |
+| *       | `/users/*`      | *      | *                         | `[400/500]` - [ErrorInfo](#ErrorInfo)       | 0.0.1 |
 
-## How to ...
+### Request
+
+#### UserReqDto
+
+```json
+{
+  "email": "email@domain.com",
+  "password": "min.8 & max.30",
+  "nickname": "min.2 & max.8"
+}
+```
+
+### Response
+
+#### UserResDto
+
+```json
+// [201] Created
+{
+  "id": "number",
+  "email": "email@domain.com",
+  "nickname": "nick-name"
+}
+  ```
+  
+#### ErrorInfo
+
+```json
+// [400/500] Error
+{
+  "cause": "reason",
+  "detail": "error messages"
+}
+```
+
+---
+
+## How to
 
 ### Prepare MySQL
 

@@ -12,18 +12,17 @@ import javax.validation.constraints.Size;
 @Getter
 @Builder
 @AllArgsConstructor
-public class UserDto implements IDto<User> {
+public class UserReqDto implements IReqDto<User> {
 
-  @NonNull
   @Pattern(regexp = RegExp.Email ,message = "'email' is invalid")
   private final String email;
 
-  @NonNull
   @Size(min = 8, message = "'password' must be longer than 8 words" )
+  @Size(max = 30, message = "'password' must be shorter than 30 words" )
   private final String password;
 
-  @NonNull
   @Size(min = 2, message = "'nickname' must be longer than 2 words" )
+  @Size(max = 8, message = "'nickname' must be shorter than 8 words" )
   private final String nickname;
 
   @Override

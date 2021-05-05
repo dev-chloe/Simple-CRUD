@@ -1,8 +1,8 @@
 package com.toyproject.simplecrudapp.interfaces.advisors;
 
+import com.toyproject.simplecrudapp.interfaces.exceptions.UserResException;
 import com.toyproject.simplecrudapp.utils.fixed.Res;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,19 +12,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class CommonAdvisor {
+public class UserAdvisor {
 
   /**
-   * Handle BindException when occur Field error in Request DTO Object.
+   * Handle UserResException when occur Field error in Response DTO Object.
    */
-  @ExceptionHandler( BindException.class )
-  @ResponseStatus( HttpStatus.BAD_REQUEST ) // 400
+  @ExceptionHandler( UserResException.class )
+  @ResponseStatus( HttpStatus.INTERNAL_SERVER_ERROR ) // 500
   @ResponseBody
-  public Map<String, Object> handleInvalidBindEachDTO(BindException e) {
+  public Map<String, Object> handleRuntimeException(UserResException e) {
     Map<String, Object> jsonMap = new HashMap<>();
-    jsonMap.put( Res.K.Cause, "invalid parameter");
-    jsonMap.put( Res.K.Detail, e.getFieldError().getDefaultMessage());
+    jsonMap.put( Res.K.Cause, "internal error");
+    jsonMap.put( Res.K.Detail, e.getMessage());
     return jsonMap;
   }
-
 }

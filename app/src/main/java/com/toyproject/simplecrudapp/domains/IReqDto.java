@@ -1,5 +1,5 @@
 package com.toyproject.simplecrudapp.domains;
 
-public interface IDto<T> {
+public interface IReqDto<T> {
   T toEntity();
 }

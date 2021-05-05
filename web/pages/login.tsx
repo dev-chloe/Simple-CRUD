@@ -27,8 +27,7 @@ const login = () => {
       return
     }
     try {
-      console.log('hi')
-      router.replace('/')
+      router.replace('/mypage')
     } catch (error) {
       setError(error.message)
     }

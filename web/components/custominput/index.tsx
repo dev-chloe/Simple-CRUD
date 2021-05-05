@@ -5,12 +5,12 @@ const Custominput =({
   name,
   placeholder = '',
   value,
-  onChange = () => {},
-  onBlur = () => {}
+  onChange,
+  onBlur
 }) => {
   const [ error, setError ] = useState('');
 
-  const headleBule = () => {
+  const headleBlur = () => {
     const isValid = onBlur && onBlur(value);
     isValid ? setError('') : setError(`invalid ${name}`)
   }
@@ -22,7 +22,7 @@ const Custominput =({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        onBlur={headleBule}
+        onBlur={headleBlur}
       ></input>
       
       { error && <p className="error">{error}</p> }

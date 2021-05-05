@@ -29,7 +29,7 @@ const Register = () => {
     }
     try {
       console.log('fin')
-      router.replace('/')
+      router.replace('/login')
     } catch(error) {
       setError(error.message);
     }
@@ -58,7 +58,7 @@ const Register = () => {
           placeholder="Enter your name"
           value={registerInfo.name}
           onChange={handleInputChange}
-          onBlur={validateEmail}
+          onBlur={validateRequired}
         ></Custominput>
         <Custominput
           type="email"
@@ -66,7 +66,7 @@ const Register = () => {
           placeholder="Enter your email"
           value={registerInfo.email}
           onChange={handleInputChange}
-          onBlur={validateRequired}
+          onBlur={validateEmail}
         ></Custominput>
         <Custominput
           type="password"

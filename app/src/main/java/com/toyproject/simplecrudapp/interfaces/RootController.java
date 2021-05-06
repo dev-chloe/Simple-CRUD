@@ -21,8 +21,8 @@ public class RootController {
   }
 
   @GetMapping("/health-check")
-  public ResponseEntity<?> healthCheck() { // https://www.baeldung.com/spring-response-entity
-    return ResponseEntity.ok("SpringBoot API is now ready!");
+  public ResponseEntity<?> healthCheck() {
+    return ResponseEntity.ok("API Server is ready.");
   }
 
 }

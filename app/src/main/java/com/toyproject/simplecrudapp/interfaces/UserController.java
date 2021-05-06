@@ -27,7 +27,7 @@ public class UserController {
 
   @PostMapping("/users")
   @ResponseStatus( HttpStatus.CREATED )
-  public UserResDto signUp(@Validated UserReqDto userReqDto ) {
+  public UserResDto signUp( @Validated UserReqDto userReqDto ) {
     logger.info( _signUp + _start + userReqDto.toString() );
     UserResDto userResDto = userSignService.signUp( userReqDto );
     logger.info( _signUp + _finish + userResDto.toString() );

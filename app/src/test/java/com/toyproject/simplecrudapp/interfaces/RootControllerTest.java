@@ -1,7 +1,7 @@
 package com.toyproject.simplecrudapp.interfaces;
 
-import com.toyproject.simplecrudapp.supports.SpringMockMvcTestSupport;
-import com.toyproject.simplecrudapp.supports.SpringMockitoSupport;
+import com.toyproject.simplecrudapp.supports.MockMvcSupport;
+import com.toyproject.simplecrudapp.supports.MockitoSupport;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,8 +11,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@ExtendWith( SpringMockitoSupport.class )
-class RootControllerTest extends SpringMockMvcTestSupport {
+@ExtendWith( MockitoSupport.class )
+class RootControllerTest extends MockMvcSupport {
 
   @DisplayName("Root > Health check :: [200] ok")
   @Test

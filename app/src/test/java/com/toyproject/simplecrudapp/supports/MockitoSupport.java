@@ -12,7 +12,7 @@ import java.util.Objects;
 
 import static org.mockito.Mockito.mock;
 
-public class SpringMockitoSupport implements TestInstancePostProcessor, ParameterResolver {
+public class MockitoSupport implements TestInstancePostProcessor, ParameterResolver {
 
   @Override
   public void postProcessTestInstance(Object testInstance, ExtensionContext context) {
@@ -31,7 +31,7 @@ public class SpringMockitoSupport implements TestInstancePostProcessor, Paramete
 
   private Object getMock( Parameter parameter, ExtensionContext extensionContext) {
     Class<?> mockType = parameter.getType();
-    ExtensionContext.Store mocks = extensionContext.getStore( ExtensionContext.Namespace.create( SpringMockitoSupport.class, mockType));
+    ExtensionContext.Store mocks = extensionContext.getStore( ExtensionContext.Namespace.create( MockitoSupport.class, mockType));
     String mockName = getMockName(parameter);
 
     return Objects.isNull(mockName)

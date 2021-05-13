@@ -41,4 +41,27 @@ public class UserResDto {
   public String toString() {
     return String.format( "UserResDto > id: '%d', email: '%s', nickname: '%s'", id, email, nickname);
   }
+
+  @Override
+  public boolean equals( Object o ) {
+    if ( Objects.isNull( o )) {
+      return false;
+    }
+    if ( this == o ) {
+      return true;
+    }
+    if ( !(o instanceof UserResDto) ) {
+      return false;
+    }
+    UserResDto that = (UserResDto) o;
+    return id.equals( that.id )
+        && email.equals( that.email )
+        && nickname.equals( that.nickname );
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash( id, email, nickname );
+  }
+
 }

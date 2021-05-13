@@ -7,6 +7,7 @@ import com.toyproject.simplecrudapp.domains.req.UserReqDto;
 import com.toyproject.simplecrudapp.domains.res.UserResDto;
 import com.toyproject.simplecrudapp.supports.MockMvcSupport;
 import com.toyproject.simplecrudapp.supports.MockitoSupport;
+import com.toyproject.simplecrudapp.supports.SpringTestSupport;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,9 +25,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@DisplayName( "Interface Test :: UserController" )
 @ExtendWith( MockitoSupport.class )
 @WebMvcTest( UserController.class )
-class UserControllerTest extends MockMvcSupport {
+class UserControllerTest extends MockMvcSupport implements SpringTestSupport {
 
   @MockBean
   private UserSignService mockUserSignService;
@@ -43,7 +45,7 @@ class UserControllerTest extends MockMvcSupport {
                     .build();
   }
 
-  @DisplayName("User > Sign-up :: [201] created")
+  @DisplayName("Sign-up :: [201] created")
   @Test
   void signUpTest() throws Exception {
     // Given-When-Then
@@ -55,7 +57,7 @@ class UserControllerTest extends MockMvcSupport {
     UserResDto thenUserResDto = UserResDto.factory( givenUser );
 
     when( mockUserSignService.signUp( givenUserReqDto ))
-        .thenReturn( thenUserResDto ); // FIXME :: Why return null?
+        .thenReturn( thenUserResDto );
 
     // Payload
     Map<String, String> payload = new HashMap<>();

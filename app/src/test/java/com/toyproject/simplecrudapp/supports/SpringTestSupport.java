@@ -9,5 +9,5 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ExtendWith( SpringExtension.class )
 @SpringBootTest( classes = SimpleCrudApplication.class )
 @ActiveProfiles( "test" )
-public abstract class SpringTestSupport {
+public interface SpringTestSupport {
 }

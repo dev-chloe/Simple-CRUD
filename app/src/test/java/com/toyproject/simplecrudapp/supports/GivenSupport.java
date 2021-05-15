@@ -2,9 +2,9 @@ package com.toyproject.simplecrudapp.supports;
 
 import com.toyproject.simplecrudapp.domains.User;
 
-public abstract class UserMockSupport extends MockMvcSupport {
+public class GivenSupport {
 
-  protected User giveUser() {
+  public static User givenUserFactory() {
     return User.builder()
                .id( 1L )
                .email( "tester@email.com" )

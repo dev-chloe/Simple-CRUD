@@ -5,7 +5,8 @@ import com.toyproject.simplecrudapp.domains.UserRepository;
 import com.toyproject.simplecrudapp.domains.req.UserReqDto;
 import com.toyproject.simplecrudapp.domains.res.UserResDto;
 import com.toyproject.simplecrudapp.interfaces.exceptions.UserRequestException;
-import com.toyproject.simplecrudapp.supports.UserMockSupport;
+import com.toyproject.simplecrudapp.supports.GivenSupport;
+import com.toyproject.simplecrudapp.supports.MockMvcSupport;
 import com.toyproject.simplecrudapp.supports.MockitoSupport;
 import com.toyproject.simplecrudapp.supports.SpringTestSupport;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +22,7 @@ import static org.mockito.Mockito.when;
 
 @DisplayName( "Application Test :: UserSignService" )
 @ExtendWith( MockitoSupport.class )
-class UserSignServiceTest extends UserMockSupport implements SpringTestSupport {
+class UserSignServiceTest extends MockMvcSupport implements SpringTestSupport {
 
   private UserSignService userSignService;
 
@@ -32,7 +33,7 @@ class UserSignServiceTest extends UserMockSupport implements SpringTestSupport {
 
   @BeforeEach
   void setUp() {
-    givenUser = giveUser();
+    givenUser = GivenSupport.givenUserFactory();
     userSignService = new UserSignService(mockUserRepository);
   }
 

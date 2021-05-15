@@ -36,9 +36,6 @@ public class User {
 
   @Override
   public boolean equals( Object o ) {
-    if ( Objects.isNull( o )) {
-      return false;
-    }
     if ( this == o ) {
       return true;
     }

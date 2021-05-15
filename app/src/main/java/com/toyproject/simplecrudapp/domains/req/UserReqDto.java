@@ -42,9 +42,6 @@ public class UserReqDto implements IReqDto< User > {
 
   @Override
   public boolean equals( Object o ) {
-    if ( Objects.isNull( o )) {
-      return false;
-    }
     if ( this == o ) {
       return true;
     }

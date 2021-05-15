@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 @Entity
 @NoArgsConstructor(force = true)
@@ -31,5 +32,28 @@ public class User {
   @Override
   public String toString() {
     return String.format( "User > id: '%d', email: '%s', nickname: '%s'", id, email, nickname);
+  }
+
+  @Override
+  public boolean equals( Object o ) {
+    if ( Objects.isNull( o )) {
+      return false;
+    }
+    if ( this == o ) {
+      return true;
+    }
+    if ( !(o instanceof User) ) {
+      return false;
+    }
+    User user = (User) o;
+    return id == user.id
+        && email.equals( user.email )
+        && password.equals( user.password )
+        && nickname.equals( user.nickname );
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash( id, email, password, nickname );
   }
 }

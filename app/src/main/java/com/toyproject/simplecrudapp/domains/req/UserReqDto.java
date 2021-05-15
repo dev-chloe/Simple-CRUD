@@ -27,28 +27,6 @@ public class UserReqDto implements IReqDto< User > {
   private final String nickname;
 
   @Override
-  public boolean equals( Object o ) {
-    if ( Objects.isNull( o )) {
-      return false;
-    }
-    if ( this == o ) {
-      return true;
-    }
-    if ( !(o instanceof UserReqDto) ) {
-      return false;
-    }
-    UserReqDto that = (UserReqDto) o;
-    return Objects.equals( email, that.email )
-        && Objects.equals( password, that.password )
-        && Objects.equals( nickname, that.nickname );
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash( email, password, nickname );
-  }
-
-  @Override
   public String toString() {
     return String.format( "UserReqDto > email: '%s', nickname: '%s', password: (hidden)", email, nickname);
   }
@@ -62,4 +40,25 @@ public class UserReqDto implements IReqDto< User > {
                .build();
   }
 
+  @Override
+  public boolean equals( Object o ) {
+    if ( Objects.isNull( o )) {
+      return false;
+    }
+    if ( this == o ) {
+      return true;
+    }
+    if ( !(o instanceof UserReqDto) ) {
+      return false;
+    }
+    UserReqDto that = (UserReqDto) o;
+    return Objects.equals( email, that.email )
+               && Objects.equals( password, that.password )
+               && Objects.equals( nickname, that.nickname );
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash( email, password, nickname );
+  }
 }

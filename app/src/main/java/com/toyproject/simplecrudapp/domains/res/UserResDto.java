@@ -63,5 +63,4 @@ public class UserResDto {
   public int hashCode() {
     return Objects.hash( id, email, nickname );
   }
-
 }

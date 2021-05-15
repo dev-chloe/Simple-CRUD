@@ -18,6 +18,10 @@ public class UserSignService {
   @Autowired
   UserRepository userRepository;
 
+  public UserSignService( UserRepository userRepository) {
+    this.userRepository = userRepository;
+  }
+
   public UserResDto signUp( UserReqDto userReqDto ) {
     // Check
     User reqUser = userReqDto.toEntity();

@@ -5,7 +5,7 @@ import com.toyproject.simplecrudapp.applications.UserSignService;
 import com.toyproject.simplecrudapp.domains.User;
 import com.toyproject.simplecrudapp.domains.req.UserReqDto;
 import com.toyproject.simplecrudapp.domains.res.UserResDto;
-import com.toyproject.simplecrudapp.supports.MockMvcSupport;
+import com.toyproject.simplecrudapp.supports.UserMockSupport;
 import com.toyproject.simplecrudapp.supports.MockitoSupport;
 import com.toyproject.simplecrudapp.supports.SpringTestSupport;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @DisplayName( "Interface Test :: UserController" )
 @ExtendWith( MockitoSupport.class )
 @WebMvcTest( UserController.class )
-class UserControllerTest extends MockMvcSupport implements SpringTestSupport {
+class UserControllerTest extends UserMockSupport implements SpringTestSupport {
 
   @MockBean
   private UserSignService mockUserSignService;
@@ -37,12 +37,7 @@ class UserControllerTest extends MockMvcSupport implements SpringTestSupport {
 
   @BeforeEach
   void setUp() {
-    givenUser = User.builder()
-                    .id( 1L )
-                    .email( "tester@email.com" )
-                    .password( "p@ss_W0RD!!" )
-                    .nickname( "MyTester" )
-                    .build();
+    givenUser = giveUser();
   }
 
   @DisplayName("Sign-up :: [201] created")

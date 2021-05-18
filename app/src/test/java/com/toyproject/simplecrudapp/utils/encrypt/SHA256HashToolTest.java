@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DisplayName( "Util Test :: SHA-256 Hash Tool [POJO]" )
+@DisplayName( "Util Test :: SHA256 Hash Tool [POJO]" )
 class SHA256HashToolTest {
 
   private static HashTool sha256HashTool;

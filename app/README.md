@@ -47,9 +47,9 @@
 
 ---
 
-## How to
+## How to run in local docker environment
 
-### Prepare MySQL
+### Prepare `MySQL 5.7` (bridge mode)
 
 - build mysql docker image
 
@@ -62,11 +62,17 @@
   ```bash
   DEV_PW=local-admin
   docker run -d \
+    --network bridge \
     -p 3306:3306 \
     -p 33060:33060 \
     -e MYSQL_ROOT_PASSWORD=$DEV_PW \
     --name simple-crud-mysql \
     simple-crud-mysql
+  
+  # Check MySQL Container IP Address  
+  docker inspect simple-crud-mysql-bridge |grep '"IPAddress"'
+    # Maybe like this..
+    # "IPAddress": "172.17.0.2",
   ```
 
 - run for PowerShell (Windows 10)
@@ -74,16 +80,26 @@
   ```powershell
   $MY_ROOT_PW="local-admin"
   docker run -d `
+    --network bridge `
     -p 3306:3306 `
     -p 33060:33060 `
     -e MYSQL_ROOT_PASSWORD="$MY_ROOT_PW" `
     --name simple-crud-mysql `
     simple-crud-mysql
+  
+  # Check MySQL Container IP Address  
+  docker inspect simple-crud-mysql-bridge |select-string '"IPAddress"'
+    # Maybe like this..
+    # "IPAddress": "172.17.0.2",
   ```
 
-### run Application
+### run `Spring Boot App` (bridge mode)
 
 - Please run in [Intellij](https://www.jetbrains.com/ko-kr/idea/download/download-thanks.html) IDE
+
+- Java Environment List (none production): delimeter: `;`
+  
+  - `masterKey=local-key` : MasterKey for SecretKey of HmacSHA256
 
 ### build docker image
 
@@ -94,7 +110,7 @@ docker pull openjdk:11-jre
 ./gradlew jibDockerBuild
 ```
 
-```text
+```plaintext
 Executing task 'jibDockerBuild'...
 
 > Task :compileJava UP-TO-DATE
@@ -120,3 +136,34 @@ BUILD SUCCESSFUL in 9s
 3 actionable tasks: 1 executed, 2 up-to-date
 Task execution finished 'jibDockerBuild'.
 ```
+
+### Run Docker Container
+
+> if your mysql docker container's ip address is diffrent,  
+> edit the value of `spring.datasource.url` field before run.
+
+- in bash/zsh for Mac
+  
+  ```bash
+  # Run
+  docker run -it --rm \
+    --network bridge \
+    -p 8888:8080 \
+    -e masterKey=local-key \
+    --name simple-crud-app-bridge \
+    -e spring.datasource.url="jdbc:mysql://172.17.0.2:3306/simple" \
+    dev2sponge/simple-crud-app
+  ```
+  
+- in PowerShell for Windows
+  
+  ```powershell
+  # Run
+  docker run -it --rm `
+    --network bridge `
+    -p 8888:8080 `
+    -e masterKey=local-key `
+    -e spring.datasource.url="jdbc:mysql://172.17.0.2:3306/simple" `
+    --name simple-crud-app-bridge `
+    dev2sponge/simple-crud-app
+  ```

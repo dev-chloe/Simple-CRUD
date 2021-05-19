@@ -10,6 +10,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Map;
 import java.util.Objects;
 
 public class HmacSHA256HashTool extends HashTool {
@@ -24,24 +25,24 @@ public class HmacSHA256HashTool extends HashTool {
 
 
   private HmacSHA256HashTool() {
-    String key = "local-key"; // FIXME :: INIT PARAMETER
-    SecretKey secretKey = generateSecretKey(key);
+    SecretKey secretKey = generateSecretKey();
     this.hmacSHA256 = initMacWithSecretKey(secretKey);
   }
 
-  private SecretKey generateSecretKey(final String key) {
+  private SecretKey generateSecretKey() {
+    // Get Master Key from Java Environment.
+    final String masterKey = System.getenv().get( "masterKey" );
     // Validate
     try {
-      if ( Objects.isNull(key) || key.isBlank() )
+      if ( Objects.isNull(masterKey) || masterKey.isBlank() )
         throw new RuntimeException();
     } catch ( RuntimeException e ) {
       logger.error( HASH_TYPE + " :: Invalid 'key' has been detected. Fail to init HashTool..." );
       throw new RuntimeException("invalid 'key' for " + HASH_TYPE + " (Cannot be null or blank)");
     }
-
-    // Secret Key from Original Key
-    logger.info( HASH_TYPE + " :: Hash Tool has received the key." );
-    return new SecretKeySpec( key.getBytes( StandardCharsets.UTF_8 ), HASH_TYPE );
+    // Secret Key from Master Key
+    logger.info( HASH_TYPE + " :: Hash Tool has received the key from env (Environment Variable)." );
+    return new SecretKeySpec( masterKey.getBytes( StandardCharsets.UTF_8 ), HASH_TYPE );
   }
 
   private Mac initMacWithSecretKey(final SecretKey secretKey) {

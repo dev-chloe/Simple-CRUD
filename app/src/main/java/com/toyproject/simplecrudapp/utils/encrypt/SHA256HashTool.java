@@ -14,7 +14,7 @@ public class SHA256HashTool extends HashTool {
   public static HashTool getInstance() { return INSTANCE; }
 
   @Override
-  protected String hash( String orgStr ) {
+  public String hash( String orgStr ) {
     try {
       // Validate
       if ( Objects.isNull(orgStr) || orgStr.isBlank() )

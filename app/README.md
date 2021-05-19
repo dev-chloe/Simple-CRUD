@@ -167,3 +167,6 @@ Task execution finished 'jibDockerBuild'.
     --name simple-crud-app-bridge `
     dev2sponge/simple-crud-app
   ```
+
+- connect http://localhost:8888/
+

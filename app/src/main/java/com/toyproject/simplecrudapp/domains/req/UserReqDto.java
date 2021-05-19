@@ -1,6 +1,8 @@
 package com.toyproject.simplecrudapp.domains.req;
 
 import com.toyproject.simplecrudapp.domains.User;
+import com.toyproject.simplecrudapp.utils.encrypt.HashTool;
+import com.toyproject.simplecrudapp.utils.encrypt.HmacSHA256HashTool;
 import com.toyproject.simplecrudapp.utils.fixed.RegExp;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,9 +37,15 @@ public class UserReqDto implements IReqDto< User > {
   public User toEntity() {
     return User.builder()
                .email(email)
-               .password(password) // TODO Password Encrypt
+               .password(encryptPassword(password))
                .nickname(nickname)
                .build();
+  }
+
+  private String encryptPassword(String orgPassword) {
+    HashTool hmacSHA256 = HmacSHA256HashTool.getInstance();
+    final String encPassword = hmacSHA256.hash( orgPassword );
+    return encPassword;
   }
 
   @Override

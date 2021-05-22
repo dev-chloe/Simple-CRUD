@@ -6,8 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ExtendWith( SpringExtension.class )
 @SpringBootTest( classes = SimpleCrudApplication.class )
+@ExtendWith( SpringExtension.class )
 @ActiveProfiles( "test" )
 public interface SpringTestSupport {
 }

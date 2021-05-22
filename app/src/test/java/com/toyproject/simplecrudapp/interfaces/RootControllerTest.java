@@ -1,7 +1,7 @@
 package com.toyproject.simplecrudapp.interfaces;
 
-import com.toyproject.simplecrudapp.supports.MockMvcSupport;
-import com.toyproject.simplecrudapp.supports.MockitoSupport;
+import com.toyproject.simplecrudapp._supports.MockMvcSupport;
+import com.toyproject.simplecrudapp._supports.MockitoSupport;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

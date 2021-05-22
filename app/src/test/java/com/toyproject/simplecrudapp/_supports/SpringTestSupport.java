@@ -1,4 +1,4 @@
-package com.toyproject.simplecrudapp.supports;
+package com.toyproject.simplecrudapp._supports;
 
 import com.toyproject.simplecrudapp.SimpleCrudApplication;
 import org.junit.jupiter.api.extension.ExtendWith;

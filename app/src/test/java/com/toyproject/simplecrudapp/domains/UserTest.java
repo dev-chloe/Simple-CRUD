@@ -1,6 +1,6 @@
 package com.toyproject.simplecrudapp.domains;
 
-import com.toyproject.simplecrudapp.supports.GivenSupport;
+import com.toyproject.simplecrudapp._supports.GivenSupport;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

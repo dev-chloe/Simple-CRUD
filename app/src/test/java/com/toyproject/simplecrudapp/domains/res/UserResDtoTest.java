@@ -1,8 +1,7 @@
 package com.toyproject.simplecrudapp.domains.res;
 
 import com.toyproject.simplecrudapp.domains.User;
-import com.toyproject.simplecrudapp.domains.req.UserReqDto;
-import com.toyproject.simplecrudapp.supports.GivenSupport;
+import com.toyproject.simplecrudapp._supports.GivenSupport;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

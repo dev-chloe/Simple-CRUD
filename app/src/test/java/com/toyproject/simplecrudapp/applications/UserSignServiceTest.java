@@ -1,6 +1,6 @@
 package com.toyproject.simplecrudapp.applications;
 
-import com.toyproject.simplecrudapp.domains.User;
+import com.toyproject.simplecrudapp.domains.entity.User;
 import com.toyproject.simplecrudapp.domains.UserRepository;
 import com.toyproject.simplecrudapp.domains.req.UserReqDto;
 import com.toyproject.simplecrudapp.domains.res.UserResDto;

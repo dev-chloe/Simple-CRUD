@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="UserSignServiceTest" type="JUnit" factoryName="JUnit" folderName="applications">
+    <module name="simple-crud-app.test" />
+    <option name="PACKAGE_NAME" value="com.toyproject.simplecrudapp.applications" />
+    <option name="MAIN_CLASS_NAME" value="com.toyproject.simplecrudapp.applications.UserSignServiceTest" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
+    <envs>
+      <env name="masterKey" value="local-key" />
+    </envs>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

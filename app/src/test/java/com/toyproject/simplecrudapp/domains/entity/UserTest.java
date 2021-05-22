@@ -1,4 +1,4 @@
-package com.toyproject.simplecrudapp.domains;
+package com.toyproject.simplecrudapp.domains.entity;
 
 import com.toyproject.simplecrudapp._supports.GivenSupport;
 import org.junit.jupiter.api.BeforeEach;

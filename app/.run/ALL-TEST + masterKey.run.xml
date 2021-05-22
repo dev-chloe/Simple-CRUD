@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ALL-TEST + masterKey" type="JUnit" factoryName="JUnit" singleton="false">
+    <module name="simple-crud-app.test" />
+    <option name="ALTERNATIVE_JRE_PATH" value="AdoptJDK 11" />
+    <option name="PACKAGE_NAME" value="" />
+    <option name="MAIN_CLASS_NAME" value="" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="package" />
+    <envs>
+      <env name="-Dfile.encoding" value="UTF-8" />
+      <env name="masterKey" value="local-key" />
+    </envs>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

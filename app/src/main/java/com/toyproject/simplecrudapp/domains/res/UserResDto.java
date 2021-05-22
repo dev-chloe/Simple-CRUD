@@ -1,6 +1,6 @@
 package com.toyproject.simplecrudapp.domains.res;
 
-import com.toyproject.simplecrudapp.domains.User;
+import com.toyproject.simplecrudapp.domains.entity.User;
 import com.toyproject.simplecrudapp.interfaces.exceptions.UserInternalException;
 import com.toyproject.simplecrudapp.utils.fixed.RegExp;
 import lombok.Getter;

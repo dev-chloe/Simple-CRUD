@@ -2,7 +2,7 @@ package com.toyproject.simplecrudapp.interfaces;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.toyproject.simplecrudapp.applications.UserSignService;
-import com.toyproject.simplecrudapp.domains.User;
+import com.toyproject.simplecrudapp.domains.entity.User;
 import com.toyproject.simplecrudapp.domains.req.UserReqDto;
 import com.toyproject.simplecrudapp.domains.res.UserResDto;
 import com.toyproject.simplecrudapp._supports.GivenSupport;

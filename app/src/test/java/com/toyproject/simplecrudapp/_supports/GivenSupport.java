@@ -1,6 +1,6 @@
 package com.toyproject.simplecrudapp._supports;
 
-import com.toyproject.simplecrudapp.domains.User;
+import com.toyproject.simplecrudapp.domains.entity.User;
 
 public class GivenSupport {
 

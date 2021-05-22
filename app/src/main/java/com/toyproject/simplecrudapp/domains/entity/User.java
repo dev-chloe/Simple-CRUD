@@ -1,4 +1,4 @@
-package com.toyproject.simplecrudapp.domains;
+package com.toyproject.simplecrudapp.domains.entity;
 
 import lombok.*;
 

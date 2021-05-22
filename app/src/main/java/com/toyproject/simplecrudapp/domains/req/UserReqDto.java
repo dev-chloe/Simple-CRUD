@@ -1,6 +1,6 @@
 package com.toyproject.simplecrudapp.domains.req;
 
-import com.toyproject.simplecrudapp.domains.User;
+import com.toyproject.simplecrudapp.domains.entity.User;
 import com.toyproject.simplecrudapp.utils.encrypt.HashTool;
 import com.toyproject.simplecrudapp.utils.encrypt.HmacSHA256HashTool;
 import com.toyproject.simplecrudapp.utils.fixed.RegExp;

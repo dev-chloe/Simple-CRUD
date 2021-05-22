@@ -1,7 +1,6 @@
 package com.toyproject.simplecrudapp.interfaces;
 
 import com.toyproject.simplecrudapp.applications.UserSignService;
-import com.toyproject.simplecrudapp.domains.User;
 import com.toyproject.simplecrudapp.domains.req.UserReqDto;
 import com.toyproject.simplecrudapp.domains.res.UserResDto;
 import org.slf4j.Logger;

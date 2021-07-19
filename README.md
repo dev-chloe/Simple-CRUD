@@ -10,7 +10,7 @@
 ## How to run with docker compose
 
 ```bash
-docker compose up -d
+docker-compose up -d --build
   # Creating network "simple-crud_spring-mysql" with the default driver
   # Creating network "simple-crud_next-springboot" with the default driver
   # Creating simple-crud_db_1  ... done

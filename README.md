@@ -10,7 +10,7 @@
 ## How to run with docker compose
 
 ```bash
-docker-compose up -d --build
+docker-compose up -d
   # Creating network "simple-crud_spring-mysql" with the default driver
   # Creating network "simple-crud_next-springboot" with the default driver
   # Creating simple-crud_db_1  ... done
@@ -26,7 +26,7 @@ docker-compose up -d --build
 - for developing WEB(Next.js) using APP API
 
   ```bash
-  docker compose -f ./app-compose-for-web.yaml up
+  docker-compose up -d --build
   ```
 
 ### Check logs from compose

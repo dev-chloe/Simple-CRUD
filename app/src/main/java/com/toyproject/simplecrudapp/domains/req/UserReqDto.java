@@ -17,7 +17,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class UserReqDto implements IReqDto< User > {
 
-  @Pattern(regexp = RegExp.Email ,message = "'email' is invalid")
+  @Pattern(regexp = RegExp.Email, message = "'email' is invalid")
   private final String email;
 
   @Size(min = 8, message = "'password' must be longer than 8 words" )
@@ -30,7 +30,7 @@ public class UserReqDto implements IReqDto< User > {
 
   @Override
   public String toString() {
-    return String.format( "UserReqDto > email: '%s', nickname: '%s', password: (hidden)", email, nickname);
+    return String.format("UserReqDto > email: '%s', nickname: '%s', password: (hidden)", email, nickname);
   }
 
   @Override
@@ -44,7 +44,7 @@ public class UserReqDto implements IReqDto< User > {
 
   private String encryptPassword(String orgPassword) {
     HashTool hmacSHA256 = HmacSHA256HashTool.getInstance();
-    final String encPassword = hmacSHA256.hash( orgPassword );
+    final String encPassword = hmacSHA256.hash(orgPassword);
     return encPassword;
   }
 
@@ -57,13 +57,13 @@ public class UserReqDto implements IReqDto< User > {
       return false;
     }
     UserReqDto that = (UserReqDto) o;
-    return Objects.equals( email, that.email )
-               && Objects.equals( password, that.password )
-               && Objects.equals( nickname, that.nickname );
+    return Objects.equals(email, that.email)
+               && Objects.equals(password, that.password)
+               && Objects.equals(nickname, that.nickname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash( email, password, nickname );
+    return Objects.hash(email, password, nickname);
   }
 }
